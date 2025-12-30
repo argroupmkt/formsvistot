@@ -3,47 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulário de Qualificação | Landing Page</title>
+    <title>Formulário Institucional | Design Americano</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                fontFamily: {
+                    sans: ['Inter', 'sans-serif'],
+                },
+                extend: {
+                    colors: {
+                        // Definindo a paleta "Americana" personalizada
+                        'usa-navy': '#0a192f',    /* Azul Marinho Profundo */
+                        'usa-blue': '#1e3a8a',    /* Azul Institucional */
+                        'usa-red': '#b91c1c',     /* Vermelho Sóbrio para acentos */
+                        'usa-cream': '#f8fafc',   /* Um "quase branco" para o fundo */
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        /* Ajuste para suavizar o carregamento do iframe */
-        .form-container iframe {
-            border-radius: 12px;
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        /* Adiciona uma sombra mais profunda e elegante ao container do formulário */
+        .classic-card-shadow {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        /* Efeito sutil no header */
+        .header-gradient {
+            background: linear-gradient(135deg, #0a192f 0%, #1e3a8a 100%);
         }
     </style>
 </head>
-<body class="bg-slate-50 font-sans text-slate-900">
+<body class="bg-usa-cream text-slate-800 font-sans">
 
-    <header class="py-12 px-4 text-center bg-white border-b border-slate-200">
-        <div class="max-w-3xl mx-auto">
-            <h1 class="text-3xl md:text-4xl font-extrabold text-slate-800 mb-4 leading-tight">
-                Pronto para o Próximo Passo?
+    <header class="header-gradient text-white py-16 px-4 relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-full opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
+        
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            <div class="w-16 h-1 bg-usa-red mx-auto mb-6 rounded-full"></div>
+            
+            <h1 class="text-3xl md:text-5xl font-extrabold mb-6 tracking-tight leading-tight">
+                Solicitação de Análise Profissional
             </h1>
-            <p class="text-lg text-slate-600 mb-0">
-                Preencha as informações abaixo detalhadamente para que possamos analisar seu perfil e retornar com a melhor solução.
+            <p class="text-lg md:text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed font-medium">
+                Por favor, forneça as informações detalhadas abaixo. Nossa equipe especializada revisará seus dados com total confidencialidade.
             </p>
+        </div>
+        <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-[0]">
+            <svg class="relative block w-[calc(100%+1.3px)] h-[50px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="fill-usa-cream"></path>
+            </svg>
         </div>
     </header>
 
-    <main class="py-10 px-4">
+    <main class="px-4 pb-20 -mt-10 relative z-20">
         <div class="max-w-4xl mx-auto">
             
-            <div class="form-container bg-white p-2 md:p-6 rounded-2xl border border-slate-100 shadow-sm">
-                <div class="relative w-full overflow-hidden" style="padding-top: 150%;"> <iframe 
+            <div class="bg-white rounded-xl overflow-hidden classic-card-shadow border-t-4 border-usa-red">
+                
+                <div class="bg-slate-50 border-b border-slate-200 p-4 text-center md:text-left">
+                     <span class="text-sm font-bold text-usa-navy uppercase tracking-wider">
+                        📄 Ficha de Qualificação
+                     </span>
+                </div>
+
+                <div class="relative w-full h-0 bg-slate-100" style="padding-top: 180%;"> 
+                    <iframe 
                         src="https://docs.google.com/forms/d/e/1FAIpQLSfJ21kS_GPE97bAfpSHxU3ladwfhQIEHx4n8_OCPxtYXh5UeQ/viewform?embedded=true" 
                         class="absolute top-0 left-0 w-full h-full border-0"
                         frameborder="0" 
                         marginheight="0" 
-                        marginwidth="0">
-                        Carregando…
+                        marginwidth="0"
+                        scrolling="yes"> Carregando formulário de segurança...
                     </iframe>
                 </div>
             </div>
 
-            <div class="mt-10 text-center text-slate-500 text-sm">
-                <p>🔒 Seus dados estão seguros e serão usados apenas para análise interna.</p>
-                <p class="mt-2">© 2025 - Todos os direitos reservados.</p>
+            <div class="mt-8 text-center flex flex-col items-center justify-center text-slate-500 text-sm">
+                <div class="flex items-center space-x-2 mb-2 bg-white px-4 py-2 rounded-full shadow-sm border border-slate-100">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-usa-blue" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 4.999 8.75 8.75 0 0110 19.333 8.75 8.75 0 012.166 4.999zM10 10a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+                    </svg>
+                    <span class="font-semibold text-usa-navy">Transmissão Segura de Dados SSL 256-bit</span>
+                </div>
+                <p>© 2025 - Todas as informações são estritamente confidenciais.</p>
             </div>
 
         </div>
