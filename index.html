@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Avaliação de Elegibilidade - Visto T</title>
+    <title>Avaliação de Elegibilidade - Jeffrey Weingrad</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         /* --- CORE STYLES --- */
@@ -13,7 +13,7 @@
             --white: #FFFFFF;
             --gray-bg: #F0F2F5;
             --text-dark: #2C3E50;
-            --gold: #FFD700; /* Ouro mais vibrante para destaque */
+            --gold: #FFD700;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; }
@@ -23,7 +23,7 @@
         header {
             background: linear-gradient(135deg, var(--us-blue) 0%, #051b36 100%);
             color: var(--white);
-            padding: 2.5rem 1rem 3.5rem; /* Mais espaço embaixo para a barra de confiança encaixar */
+            padding: 2.5rem 1rem 4rem; /* Espaço extra para a barra flutuante */
             text-align: center;
             border-bottom: 5px solid var(--us-red);
         }
@@ -33,27 +33,31 @@
             font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
             line-height: 1.2;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
 
-        /* DESTAQUE DE AUTORIDADE (AAUSA) */
+        /* DESTAQUE DE AUTORIDADE (JEFFREY WEINGRAD) */
         .authority-badge {
             background-color: rgba(255, 255, 255, 0.1);
             border: 1px solid var(--gold);
-            color: var(--gold);
-            padding: 15px;
-            border-radius: 6px;
-            font-size: 1rem;
-            font-weight: 600;
-            max-width: 800px;
+            color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            font-size: 1.05rem;
+            font-weight: 500;
+            max-width: 850px;
             margin: 0 auto 10px;
-            text-transform: uppercase;
+            line-height: 1.5;
             box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
 
-        .authority-badge i {
-            margin-right: 8px;
+        .lawyer-name {
+            color: var(--gold);
+            font-weight: 800;
+            text-transform: uppercase;
+            font-size: 1.2rem;
         }
 
         /* BARRA DE CONFIANÇA */
@@ -63,7 +67,7 @@
             justify-content: center;
             gap: 2rem;
             padding: 1.5rem;
-            margin-top: -30px;
+            margin-top: -35px;
             position: relative;
             z-index: 2;
             box-shadow: 0 4px 10px rgba(0,0,0,0.08);
@@ -108,7 +112,7 @@
             padding-left: 10px;
             margin-bottom: 0.5rem;
             background: #f8f9fa;
-            padding: 8px 12px;
+            padding: 10px 12px;
         }
 
         label {
@@ -135,7 +139,6 @@
             outline: none;
         }
 
-        /* MENSAGEM DE ERRO */
         .error-msg {
             color: var(--us-red);
             font-size: 0.85rem;
@@ -145,7 +148,6 @@
         }
         input.error { border-color: var(--us-red); background: #fff5f5; }
 
-        /* CHECKBOX */
         .checkbox-wrapper {
             display: flex;
             align-items: flex-start;
@@ -159,7 +161,6 @@
         }
         .checkbox-wrapper input { width: auto; margin-top: 3px; }
 
-        /* BOTÃO */
         button {
             background: var(--us-red);
             color: var(--white);
@@ -181,7 +182,6 @@
             transform: translateY(-2px);
         }
 
-        /* FOOTER */
         .footer-note {
             text-align: center;
             font-size: 0.8rem;
@@ -189,12 +189,11 @@
             margin-top: 2rem;
         }
 
-        /* RESPONSIVIDADE */
         @media (max-width: 600px) {
             .container { margin: 20px 10px; padding: 1.5rem; }
-            header h1 { font-size: 1.5rem; }
-            .authority-badge { font-size: 0.85rem; padding: 10px; }
-            .trust-bar { flex-direction: column; gap: 10px; text-align: center; margin-top: -20px;}
+            header h1 { font-size: 1.6rem; }
+            .authority-badge { font-size: 0.9rem; padding: 15px; }
+            .trust-bar { flex-direction: column; gap: 10px; text-align: center; margin-top: -25px;}
         }
     </style>
 </head>
@@ -204,8 +203,8 @@
         <h1>Avaliação Visto T & Defesa de Deportação</h1>
         
         <div class="authority-badge">
-            <i class="fas fa-star"></i> 
-            De acordo com a AAUSA, é o advogado com 20 anos de experiência e que mais cancelou cortes de deportação da história dos EUA.
+            <i class="fas fa-certificate" style="color: var(--gold); margin-right: 5px;"></i>
+            De acordo com a AAUSA, <span class="lawyer-name">Jeffrey Weingrad</span> é o advogado com 20 anos de experiência que mais cancelou processos de deportação na história dos EUA.
         </div>
     </header>
 
@@ -218,7 +217,7 @@
     <div class="container">
         
         <form id="visaForm" action="https://formspree.io/f/xgovjjlo" method="POST" novalidate>
-            <input type="hidden" name="_subject" value="LEAD ULTRA-QUALIFICADO: Visto T (US NUMBER)">
+            <input type="hidden" name="_subject" value="LEAD QUALIFICADO: Jeffrey Weingrad LP">
 
             <div class="section-title">1. Perfil do Caso</div>
 
@@ -226,11 +225,11 @@
                 <label>Situação Atual nos EUA:</label>
                 <select name="Cenario_Principal" required>
                     <option value="" disabled selected>Selecione uma opção...</option>
-                    <optgroup label="Entrada/Fronteira">
-                        <option value="Cai-Cai / Fronteira">Me entreguei na fronteira (Cai-Cai)</option>
+                    <optgroup label="Entrada / Fronteira">
+                        <option value="Cai-Cai / Fronteira">Entreguei-me na fronteira (Cai-Cai)</option>
                         <option value="Pelo Deserto/Rio">Atravessei sem me entregar (Deserto/Rio)</option>
                     </optgroup>
-                    <optgroup label="Status/Visto">
+                    <optgroup label="Status / Visto">
                         <option value="Visto Turista/Estudante (Overstay)">Entrei com Visto e fiquei (Overstay)</option>
                         <option value="Outro">Outra situação</option>
                     </optgroup>
@@ -240,8 +239,8 @@
             <div class="form-group">
                 <label>Você possui processo na Corte de Imigração?</label>
                 <select name="Status_Corte" required>
-                    <option value="" disabled selected>Selecione...</option>
-                    <option value="Sim, tenho corte marcada">Sim, tenho data de corte marcada</option>
+                    <option value="" disabled selected>Selecione sua situação...</option>
+                    <option value="Sim, tenho corte marcada">Sim, tenho audiência/corte marcada</option>
                     <option value="Sim, recebi NTA mas sem data">Sim, recebi o NTA mas não tenho data</option>
                     <option value="Sim, tenho ordem de deportação">Sim, já tenho ordem de deportação</option>
                     <option value="Não, nunca fui processado">Não, nunca fui processado</option>
@@ -253,7 +252,7 @@
 
             <div class="form-group">
                 <label>Nome Completo</label>
-                <input type="text" name="Nome" placeholder="Seu nome" required>
+                <input type="text" name="Nome" placeholder="Seu nome completo" required>
             </div>
 
             <div class="form-group">
@@ -269,7 +268,7 @@
 
             <div class="checkbox-wrapper">
                 <input type="checkbox" id="consent" name="Consentimento" required checked>
-                <label for="consent">Concordo em compartilhar meus dados para análise de elegibilidade com a equipe jurídica.</label>
+                <label for="consent">Autorizo o escritório <strong>Go Visa Law Firm / Jeffrey Weingrad</strong> a analisar meus dados. Entendo que o envio deste formulário é gratuito e confidencial.</label>
             </div>
 
             <button type="submit">Verificar Elegibilidade Agora &raquo;</button>
@@ -277,7 +276,7 @@
         </form>
 
         <div class="footer-note">
-            <p>&copy; 2025 Avaliação Confidencial. Todos os direitos reservados.</p>
+            <p>&copy; 2026 GO VISA LAW FIRM. Todos os direitos reservados.</p>
         </div>
 
     </div>
