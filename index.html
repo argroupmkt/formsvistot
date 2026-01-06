@@ -13,7 +13,7 @@
             --white: #FFFFFF;
             --gray-bg: #F0F2F5;
             --text-dark: #2C3E50;
-            --gold: #D4AF37; /* Toque de luxo para detalhes */
+            --gold: #FFD700; /* Ouro mais vibrante para destaque */
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; }
@@ -23,10 +23,9 @@
         header {
             background: linear-gradient(135deg, var(--us-blue) 0%, #051b36 100%);
             color: var(--white);
-            padding: 3rem 1rem;
+            padding: 2.5rem 1rem 3.5rem; /* Mais espaço embaixo para a barra de confiança encaixar */
             text-align: center;
             border-bottom: 5px solid var(--us-red);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
 
         header h1 {
@@ -34,29 +33,45 @@
             font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-bottom: 0.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
         }
 
-        header p {
-            font-size: 1.1rem;
-            font-weight: 300;
-            opacity: 0.9;
-            max-width: 700px;
-            margin: 0 auto;
+        /* DESTAQUE DE AUTORIDADE (AAUSA) */
+        .authority-badge {
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            padding: 15px;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            max-width: 800px;
+            margin: 0 auto 10px;
+            text-transform: uppercase;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
 
-        /* BARRA DE CONFIANÇA (TRUST BADGES) */
+        .authority-badge i {
+            margin-right: 8px;
+        }
+
+        /* BARRA DE CONFIANÇA */
         .trust-bar {
             background-color: var(--white);
             display: flex;
             justify-content: center;
             gap: 2rem;
             padding: 1.5rem;
-            margin-top: -30px; /* Sobe um pouco */
+            margin-top: -30px;
             position: relative;
             z-index: 2;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
             flex-wrap: wrap;
+            border-radius: 8px;
+            max-width: 90%;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .trust-item {
@@ -64,55 +79,57 @@
             align-items: center;
             gap: 10px;
             font-size: 0.9rem;
-            font-weight: 600;
+            font-weight: 700;
             color: var(--us-blue);
+            text-transform: uppercase;
         }
         
         .trust-item i { color: var(--us-red); font-size: 1.2rem; }
 
         /* CONTAINER PRINCIPAL */
         .container {
-            max-width: 750px;
-            margin: 40px auto;
+            max-width: 700px;
+            margin: 30px auto;
             background: var(--white);
-            padding: 3rem;
+            padding: 2.5rem;
             border-radius: 10px;
             box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            border-top: 4px solid var(--gold); /* Toque Premium */
+            border-top: 4px solid var(--gold);
         }
 
-        /* FORMULÁRIO */
-        form { display: flex; flex-direction: column; gap: 1.5rem; }
+        form { display: flex; flex-direction: column; gap: 1.2rem; }
         
         .section-title {
             color: var(--us-blue);
-            font-size: 1.1rem;
-            font-weight: 700;
+            font-size: 1rem;
+            font-weight: 800;
             text-transform: uppercase;
             border-left: 5px solid var(--us-red);
-            padding-left: 15px;
-            margin-bottom: 1rem;
+            padding-left: 10px;
+            margin-bottom: 0.5rem;
             background: #f8f9fa;
-            padding: 10px 15px;
+            padding: 8px 12px;
         }
 
         label {
             font-weight: 600;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.3rem;
             color: var(--text-dark);
             display: block;
+            font-size: 0.95rem;
         }
 
-        select, input, textarea {
+        select, input {
             width: 100%;
             padding: 14px;
             border: 1px solid #ced4da;
             border-radius: 6px;
             font-size: 1rem;
             transition: all 0.3s;
+            background: #fff;
         }
 
-        select:focus, input:focus, textarea:focus {
+        select:focus, input:focus {
             border-color: var(--us-blue);
             box-shadow: 0 0 0 3px rgba(10, 49, 97, 0.15);
             outline: none;
@@ -133,11 +150,12 @@
             display: flex;
             align-items: flex-start;
             gap: 12px;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: #555;
             background: #f9f9f9;
             padding: 15px;
             border-radius: 6px;
+            margin-top: 10px;
         }
         .checkbox-wrapper input { width: auto; margin-top: 3px; }
 
@@ -155,6 +173,7 @@
             cursor: pointer;
             transition: all 0.3s;
             box-shadow: 0 4px 15px rgba(179, 25, 66, 0.3);
+            margin-top: 10px;
         }
 
         button:hover {
@@ -162,86 +181,64 @@
             transform: translateY(-2px);
         }
 
-        /* SEÇÃO SOBRE O ESPECIALISTA */
-        .bio-section {
-            margin-top: 3rem;
-            padding: 2rem;
-            background: #0A3161;
-            color: white;
-            border-radius: 8px;
+        /* FOOTER */
+        .footer-note {
             text-align: center;
+            font-size: 0.8rem;
+            color: #888;
+            margin-top: 2rem;
         }
-        .bio-title { font-size: 1.2rem; font-weight: bold; margin-bottom: 10px; color: var(--gold); }
-        .bio-text { font-size: 0.95rem; opacity: 0.9; margin-bottom: 0; }
 
         /* RESPONSIVIDADE */
         @media (max-width: 600px) {
-            .container { margin: 20px; padding: 1.5rem; }
-            header h1 { font-size: 1.6rem; }
-            .trust-bar { flex-direction: column; gap: 10px; text-align: center; }
+            .container { margin: 20px 10px; padding: 1.5rem; }
+            header h1 { font-size: 1.5rem; }
+            .authority-badge { font-size: 0.85rem; padding: 10px; }
+            .trust-bar { flex-direction: column; gap: 10px; text-align: center; margin-top: -20px;}
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>Avaliação Visto T</h1>
-        <p>Proteção para Vítimas de Tráfico, Exploração e Abuso nos EUA</p>
+        <h1>Avaliação Visto T & Defesa de Deportação</h1>
+        
+        <div class="authority-badge">
+            <i class="fas fa-star"></i> 
+            De acordo com a AAUSA, é o advogado com 20 anos de experiência e que mais cancelou cortes de deportação da história dos EUA.
+        </div>
     </header>
 
     <div class="trust-bar">
-        <div class="trust-item"><i class="fas fa-user-shield"></i> Sigilo Advogado-Cliente</div>
-        <div class="trust-item"><i class="fas fa-file-contract"></i> Análise de Caso Completa</div>
-        <div class="trust-item"><i class="fas fa-lock"></i> Dados 100% Protegidos</div>
+        <div class="trust-item"><i class="fas fa-gavel"></i> Especialista em Imigração</div>
+        <div class="trust-item"><i class="fas fa-lock"></i> Sigilo Absoluto</div>
+        <div class="trust-item"><i class="fas fa-check-circle"></i> Análise Gratuita</div>
     </div>
 
     <div class="container">
         
         <form id="visaForm" action="https://formspree.io/f/xgovjjlo" method="POST" novalidate>
-            <input type="hidden" name="_subject" value="LEAD QUALIFICADO: Visto T (US NUMBER)">
+            <input type="hidden" name="_subject" value="LEAD ULTRA-QUALIFICADO: Visto T (US NUMBER)">
 
-            <div class="section-title">1. Sua Situação Atual</div>
+            <div class="section-title">1. Perfil do Caso</div>
 
             <div class="form-group">
-                <label>Qual cenário melhor descreve você hoje?</label>
+                <label>Situação Atual nos EUA:</label>
                 <select name="Cenario_Principal" required>
                     <option value="" disabled selected>Selecione uma opção...</option>
-                    <optgroup label="Problemas na Fronteira (Travessia)">
-                        <option value="Fronteira: Entreguei-me (Cai-Cai)">Me entreguei na fronteira (Cai-Cai)</option>
-                        <option value="Fronteira: Coiote/Deserto">Atravessei sem me entregar (Deserto/Rio)</option>
+                    <optgroup label="Entrada/Fronteira">
+                        <option value="Cai-Cai / Fronteira">Me entreguei na fronteira (Cai-Cai)</option>
+                        <option value="Pelo Deserto/Rio">Atravessei sem me entregar (Deserto/Rio)</option>
                     </optgroup>
-                    <optgroup label="Problemas Dentro dos EUA (Trabalho/Abuso)">
-                        <option value="Exploração: Trabalho forçado/não pago">Estou trabalhando, mas sou explorado/ameaçado</option>
-                        <option value="Violência Doméstica/Servidão">Sofro abuso doméstico ou servidão em casa</option>
-                        <option value="Estudante/Turista com problemas">Entrei com visto (Turista/Estudante) e fiquei ilegal</option>
+                    <optgroup label="Status/Visto">
+                        <option value="Visto Turista/Estudante (Overstay)">Entrei com Visto e fiquei (Overstay)</option>
+                        <option value="Outro">Outra situação</option>
                     </optgroup>
                 </select>
             </div>
 
             <div class="form-group">
-                <label>Você sofreu ou sofre alguma dessas situações?</label>
-                <select name="Tipo_Abuso" required>
-                    <option value="" disabled selected>Selecione o fato mais grave...</option>
-                    <optgroup label="Situações de Trabalho/Patrão">
-                        <option value="Ameaça de deportação pelo patrão">Patrão ameaça chamar imigração se eu sair</option>
-                        <option value="Dívida imposta">Trabalho para pagar uma dívida que nunca acaba</option>
-                        <option value="Retenção de documentos">Patrão/Alguém segura meu passaporte</option>
-                        <option value="Salário não pago/Roubo">Não recebo o combinado e sou coagido</option>
-                    </optgroup>
-                    <optgroup label="Situações de Fronteira/Coiote">
-                        <option value="Sequestro/Violência na travessia">Sequestro ou Violência física na travessia</option>
-                        <option value="Trabalho forçado pelo Coiote">Obrigado a trabalhar/carregar peso pelo Coiote</option>
-                    </optgroup>
-                    <optgroup label="Outros">
-                        <option value="Nenhuma das anteriores">Nenhuma das anteriores</option>
-                    </optgroup>
-                </select>
-            </div>
-
-            <div class="section-title" style="margin-top: 1.5rem;">2. Status com a Imigração</div>
-
-            <div class="form-group">
-                <label>Você tem processo na Corte de Imigração?</label>
+                <label>Você possui processo na Corte de Imigração?</label>
                 <select name="Status_Corte" required>
                     <option value="" disabled selected>Selecione...</option>
                     <option value="Sim, tenho corte marcada">Sim, tenho data de corte marcada</option>
@@ -252,55 +249,35 @@
                 </select>
             </div>
 
-            <div class="form-group">
-                <label>Documento que possui (Se houver):</label>
-                <select name="Documento_Posse">
-                    <option value="Nenhum/Não sei">Nenhum / Não sei</option>
-                    <option value="I-862 (NTA)">NTA (I-862)</option>
-                    <option value="I-220A">I-220A (Solto sob reconhecimento)</option>
-                    <option value="I-94 (Parole)">I-94 / Parole</option>
-                    <option value="Tornozeleira/GPS">Uso GPS/Tornozeleira</option>
-                </select>
-            </div>
-
-            <div class="form-group" style="margin-top: 15px;">
-                <label>Detalhes Adicionais (Importante):</label>
-                <textarea name="Relato" placeholder="Descreva brevemente sua situação. Ex: 'Meu chefe não me paga', 'O coiote me ameaçou', 'Tenho corte mês que vem'..."></textarea>
-            </div>
-
-            <div class="section-title" style="margin-top: 1.5rem;">3. Seus Dados de Contato</div>
+            <div class="section-title" style="margin-top: 1rem;">2. Seus Dados de Contato</div>
 
             <div class="form-group">
                 <label>Nome Completo</label>
-                <input type="text" name="Nome" placeholder="Seu nome real" required>
+                <input type="text" name="Nome" placeholder="Seu nome" required>
             </div>
 
             <div class="form-group">
                 <label>WhatsApp (Número dos EUA)</label>
                 <input type="tel" id="phone" name="WhatsApp" placeholder="(201) 555-0123" maxlength="14" required>
-                <span class="error-msg" id="phoneError">⚠️ Por favor, insira um número válido dos EUA (10 dígitos).</span>
+                <span class="error-msg" id="phoneError">⚠️ Insira um número válido dos EUA (10 dígitos).</span>
             </div>
 
             <div class="form-group">
                 <label>Cidade e Estado Atual</label>
-                <input type="text" name="Localizacao" placeholder="Ex: Framingham, MA" required>
+                <input type="text" name="Localizacao" placeholder="Ex: Newark, NJ" required>
             </div>
 
             <div class="checkbox-wrapper">
                 <input type="checkbox" id="consent" name="Consentimento" required checked>
-                <label for="consent">Autorizo a <strong>Go Visa Law Firm</strong> a analisar meus dados. Entendo que o envio deste formulário é gratuito e confidencial.</label>
+                <label for="consent">Concordo em compartilhar meus dados para análise de elegibilidade com a equipe jurídica.</label>
             </div>
 
-            <button type="submit">Solicitar Análise Gratuita &raquo;</button>
+            <button type="submit">Verificar Elegibilidade Agora &raquo;</button>
 
         </form>
 
-        <div class="bio-section">
-            <div class="bio-title">ANÁLISE FEITA POR ESPECIALISTAS</div>
-            <p class="bio-text">
-                Nossa equipe é especializada em vistos humanitários e defesa contra deportação. 
-                Já ajudamos centenas de brasileiros a regularizar sua situação nos EUA através do Visto T.
-            </p>
+        <div class="footer-note">
+            <p>&copy; 2025 Avaliação Confidencial. Todos os direitos reservados.</p>
         </div>
 
     </div>
@@ -319,7 +296,7 @@
             phoneError.style.display = 'none';
         });
 
-        // VALIDAÇÃO
+        // VALIDAÇÃO RIGOROSA
         form.addEventListener('submit', function(e) {
             const rawPhone = phoneInput.value.replace(/\D/g, '');
             if (rawPhone.length < 10) {
@@ -327,7 +304,7 @@
                 phoneInput.classList.add('error');
                 phoneError.style.display = 'block';
                 phoneInput.focus();
-                alert('Atenção: Insira um telefone válido dos EUA para que possamos entrar em contato.');
+                alert('Atenção: Insira um telefone válido dos EUA (10 dígitos).');
             }
         });
     </script>
