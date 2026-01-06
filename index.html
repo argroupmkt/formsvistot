@@ -1,100 +1,336 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulário Institucional | Design Americano</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                fontFamily: {
-                    sans: ['Inter', 'sans-serif'],
-                },
-                extend: {
-                    colors: {
-                        // Definindo a paleta "Americana" personalizada
-                        'usa-navy': '#0a192f',    /* Azul Marinho Profundo */
-                        'usa-blue': '#1e3a8a',    /* Azul Institucional */
-                        'usa-red': '#b91c1c',     /* Vermelho Sóbrio para acentos */
-                        'usa-cream': '#f8fafc',   /* Um "quase branco" para o fundo */
-                    }
-                }
-            }
-        }
-    </script>
+    <title>Avaliação de Elegibilidade - Visto T</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* Adiciona uma sombra mais profunda e elegante ao container do formulário */
-        .classic-card-shadow {
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        /* --- CORE STYLES --- */
+        :root {
+            --us-blue: #0A3161;
+            --us-red: #B31942;
+            --white: #FFFFFF;
+            --gray-bg: #F0F2F5;
+            --text-dark: #2C3E50;
+            --gold: #D4AF37; /* Toque de luxo para detalhes */
         }
-        /* Efeito sutil no header */
-        .header-gradient {
-            background: linear-gradient(135deg, #0a192f 0%, #1e3a8a 100%);
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; }
+        body { background-color: var(--gray-bg); color: var(--text-dark); line-height: 1.6; }
+
+        /* HEADER INSTITUCIONAL */
+        header {
+            background: linear-gradient(135deg, var(--us-blue) 0%, #051b36 100%);
+            color: var(--white);
+            padding: 3rem 1rem;
+            text-align: center;
+            border-bottom: 5px solid var(--us-red);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            font-weight: 300;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* BARRA DE CONFIANÇA (TRUST BADGES) */
+        .trust-bar {
+            background-color: var(--white);
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            padding: 1.5rem;
+            margin-top: -30px; /* Sobe um pouco */
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            flex-wrap: wrap;
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--us-blue);
+        }
+        
+        .trust-item i { color: var(--us-red); font-size: 1.2rem; }
+
+        /* CONTAINER PRINCIPAL */
+        .container {
+            max-width: 750px;
+            margin: 40px auto;
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 10px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border-top: 4px solid var(--gold); /* Toque Premium */
+        }
+
+        /* FORMULÁRIO */
+        form { display: flex; flex-direction: column; gap: 1.5rem; }
+        
+        .section-title {
+            color: var(--us-blue);
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            border-left: 5px solid var(--us-red);
+            padding-left: 15px;
+            margin-bottom: 1rem;
+            background: #f8f9fa;
+            padding: 10px 15px;
+        }
+
+        label {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+            display: block;
+        }
+
+        select, input, textarea {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #ced4da;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        select:focus, input:focus, textarea:focus {
+            border-color: var(--us-blue);
+            box-shadow: 0 0 0 3px rgba(10, 49, 97, 0.15);
+            outline: none;
+        }
+
+        /* MENSAGEM DE ERRO */
+        .error-msg {
+            color: var(--us-red);
+            font-size: 0.85rem;
+            margin-top: 5px;
+            display: none;
+            font-weight: bold;
+        }
+        input.error { border-color: var(--us-red); background: #fff5f5; }
+
+        /* CHECKBOX */
+        .checkbox-wrapper {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 0.9rem;
+            color: #555;
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 6px;
+        }
+        .checkbox-wrapper input { width: auto; margin-top: 3px; }
+
+        /* BOTÃO */
+        button {
+            background: var(--us-red);
+            color: var(--white);
+            border: none;
+            padding: 20px;
+            font-size: 1.2rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(179, 25, 66, 0.3);
+        }
+
+        button:hover {
+            background: #8e1030;
+            transform: translateY(-2px);
+        }
+
+        /* SEÇÃO SOBRE O ESPECIALISTA */
+        .bio-section {
+            margin-top: 3rem;
+            padding: 2rem;
+            background: #0A3161;
+            color: white;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .bio-title { font-size: 1.2rem; font-weight: bold; margin-bottom: 10px; color: var(--gold); }
+        .bio-text { font-size: 0.95rem; opacity: 0.9; margin-bottom: 0; }
+
+        /* RESPONSIVIDADE */
+        @media (max-width: 600px) {
+            .container { margin: 20px; padding: 1.5rem; }
+            header h1 { font-size: 1.6rem; }
+            .trust-bar { flex-direction: column; gap: 10px; text-align: center; }
         }
     </style>
 </head>
-<body class="bg-usa-cream text-slate-800 font-sans">
+<body>
 
-    <header class="header-gradient text-white py-16 px-4 relative overflow-hidden">
-        <div class="absolute top-0 left-0 w-full h-full opacity-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
-        
-        <div class="max-w-4xl mx-auto text-center relative z-10">
-            <div class="w-16 h-1 bg-usa-red mx-auto mb-6 rounded-full"></div>
-            
-            <h1 class="text-3xl md:text-5xl font-extrabold mb-6 tracking-tight leading-tight">
-                Solicitação de Análise Profissional
-            </h1>
-            <p class="text-lg md:text-xl text-blue-100 max-w-2xl mx-auto leading-relaxed font-medium">
-                Por favor, forneça as informações detalhadas abaixo. Nossa equipe especializada revisará seus dados com total confidencialidade.
-            </p>
-        </div>
-        <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-[0]">
-            <svg class="relative block w-[calc(100%+1.3px)] h-[50px]" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="fill-usa-cream"></path>
-            </svg>
-        </div>
+    <header>
+        <h1>Avaliação Visto T</h1>
+        <p>Proteção para Vítimas de Tráfico, Exploração e Abuso nos EUA</p>
     </header>
 
-    <main class="px-4 pb-20 -mt-10 relative z-20">
-        <div class="max-w-4xl mx-auto">
-            
-            <div class="bg-white rounded-xl overflow-hidden classic-card-shadow border-t-4 border-usa-red">
-                
-                <div class="bg-slate-50 border-b border-slate-200 p-4 text-center md:text-left">
-                     <span class="text-sm font-bold text-usa-navy uppercase tracking-wider">
-                        📄 Ficha de Qualificação
-                     </span>
-                </div>
+    <div class="trust-bar">
+        <div class="trust-item"><i class="fas fa-user-shield"></i> Sigilo Advogado-Cliente</div>
+        <div class="trust-item"><i class="fas fa-file-contract"></i> Análise de Caso Completa</div>
+        <div class="trust-item"><i class="fas fa-lock"></i> Dados 100% Protegidos</div>
+    </div>
 
-                <div class="relative w-full h-0 bg-slate-100" style="padding-top: 180%;"> 
-                    <iframe 
-                        src="https://docs.google.com/forms/d/e/1FAIpQLSfJ21kS_GPE97bAfpSHxU3ladwfhQIEHx4n8_OCPxtYXh5UeQ/viewform?embedded=true" 
-                        class="absolute top-0 left-0 w-full h-full border-0"
-                        frameborder="0" 
-                        marginheight="0" 
-                        marginwidth="0"
-                        scrolling="yes"> Carregando formulário de segurança...
-                    </iframe>
-                </div>
+    <div class="container">
+        
+        <form id="visaForm" action="https://formspree.io/f/xgovjjlo" method="POST" novalidate>
+            <input type="hidden" name="_subject" value="LEAD QUALIFICADO: Visto T (US NUMBER)">
+
+            <div class="section-title">1. Sua Situação Atual</div>
+
+            <div class="form-group">
+                <label>Qual cenário melhor descreve você hoje?</label>
+                <select name="Cenario_Principal" required>
+                    <option value="" disabled selected>Selecione uma opção...</option>
+                    <optgroup label="Problemas na Fronteira (Travessia)">
+                        <option value="Fronteira: Entreguei-me (Cai-Cai)">Me entreguei na fronteira (Cai-Cai)</option>
+                        <option value="Fronteira: Coiote/Deserto">Atravessei sem me entregar (Deserto/Rio)</option>
+                    </optgroup>
+                    <optgroup label="Problemas Dentro dos EUA (Trabalho/Abuso)">
+                        <option value="Exploração: Trabalho forçado/não pago">Estou trabalhando, mas sou explorado/ameaçado</option>
+                        <option value="Violência Doméstica/Servidão">Sofro abuso doméstico ou servidão em casa</option>
+                        <option value="Estudante/Turista com problemas">Entrei com visto (Turista/Estudante) e fiquei ilegal</option>
+                    </optgroup>
+                </select>
             </div>
 
-            <div class="mt-8 text-center flex flex-col items-center justify-center text-slate-500 text-sm">
-                <div class="flex items-center space-x-2 mb-2 bg-white px-4 py-2 rounded-full shadow-sm border border-slate-100">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-usa-blue" viewBox="0 0 20 20" fill="currentColor">
-                        <path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 4.999 8.75 8.75 0 0110 19.333 8.75 8.75 0 012.166 4.999zM10 10a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
-                    </svg>
-                    <span class="font-semibold text-usa-navy">Transmissão Segura de Dados SSL 256-bit</span>
-                </div>
-                <p>© 2025 - Todas as informações são estritamente confidenciais.</p>
+            <div class="form-group">
+                <label>Você sofreu ou sofre alguma dessas situações?</label>
+                <select name="Tipo_Abuso" required>
+                    <option value="" disabled selected>Selecione o fato mais grave...</option>
+                    <optgroup label="Situações de Trabalho/Patrão">
+                        <option value="Ameaça de deportação pelo patrão">Patrão ameaça chamar imigração se eu sair</option>
+                        <option value="Dívida imposta">Trabalho para pagar uma dívida que nunca acaba</option>
+                        <option value="Retenção de documentos">Patrão/Alguém segura meu passaporte</option>
+                        <option value="Salário não pago/Roubo">Não recebo o combinado e sou coagido</option>
+                    </optgroup>
+                    <optgroup label="Situações de Fronteira/Coiote">
+                        <option value="Sequestro/Violência na travessia">Sequestro ou Violência física na travessia</option>
+                        <option value="Trabalho forçado pelo Coiote">Obrigado a trabalhar/carregar peso pelo Coiote</option>
+                    </optgroup>
+                    <optgroup label="Outros">
+                        <option value="Nenhuma das anteriores">Nenhuma das anteriores</option>
+                    </optgroup>
+                </select>
             </div>
 
+            <div class="section-title" style="margin-top: 1.5rem;">2. Status com a Imigração</div>
+
+            <div class="form-group">
+                <label>Você tem processo na Corte de Imigração?</label>
+                <select name="Status_Corte" required>
+                    <option value="" disabled selected>Selecione...</option>
+                    <option value="Sim, tenho corte marcada">Sim, tenho data de corte marcada</option>
+                    <option value="Sim, recebi NTA mas sem data">Sim, recebi o NTA mas não tenho data</option>
+                    <option value="Sim, tenho ordem de deportação">Sim, já tenho ordem de deportação</option>
+                    <option value="Não, nunca fui processado">Não, nunca fui processado</option>
+                    <option value="Não sei minha situação">Não sei minha situação</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Documento que possui (Se houver):</label>
+                <select name="Documento_Posse">
+                    <option value="Nenhum/Não sei">Nenhum / Não sei</option>
+                    <option value="I-862 (NTA)">NTA (I-862)</option>
+                    <option value="I-220A">I-220A (Solto sob reconhecimento)</option>
+                    <option value="I-94 (Parole)">I-94 / Parole</option>
+                    <option value="Tornozeleira/GPS">Uso GPS/Tornozeleira</option>
+                </select>
+            </div>
+
+            <div class="form-group" style="margin-top: 15px;">
+                <label>Detalhes Adicionais (Importante):</label>
+                <textarea name="Relato" placeholder="Descreva brevemente sua situação. Ex: 'Meu chefe não me paga', 'O coiote me ameaçou', 'Tenho corte mês que vem'..."></textarea>
+            </div>
+
+            <div class="section-title" style="margin-top: 1.5rem;">3. Seus Dados de Contato</div>
+
+            <div class="form-group">
+                <label>Nome Completo</label>
+                <input type="text" name="Nome" placeholder="Seu nome real" required>
+            </div>
+
+            <div class="form-group">
+                <label>WhatsApp (Número dos EUA)</label>
+                <input type="tel" id="phone" name="WhatsApp" placeholder="(201) 555-0123" maxlength="14" required>
+                <span class="error-msg" id="phoneError">⚠️ Por favor, insira um número válido dos EUA (10 dígitos).</span>
+            </div>
+
+            <div class="form-group">
+                <label>Cidade e Estado Atual</label>
+                <input type="text" name="Localizacao" placeholder="Ex: Framingham, MA" required>
+            </div>
+
+            <div class="checkbox-wrapper">
+                <input type="checkbox" id="consent" name="Consentimento" required checked>
+                <label for="consent">Autorizo a <strong>Go Visa Law Firm</strong> a analisar meus dados. Entendo que o envio deste formulário é gratuito e confidencial.</label>
+            </div>
+
+            <button type="submit">Solicitar Análise Gratuita &raquo;</button>
+
+        </form>
+
+        <div class="bio-section">
+            <div class="bio-title">ANÁLISE FEITA POR ESPECIALISTAS</div>
+            <p class="bio-text">
+                Nossa equipe é especializada em vistos humanitários e defesa contra deportação. 
+                Já ajudamos centenas de brasileiros a regularizar sua situação nos EUA através do Visto T.
+            </p>
         </div>
-    </main>
+
+    </div>
+
+    <script>
+        const phoneInput = document.getElementById('phone');
+        const phoneError = document.getElementById('phoneError');
+        const form = document.getElementById('visaForm');
+
+        // MÁSCARA EUA
+        phoneInput.addEventListener('input', function (e) {
+            let x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
+            e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
+            
+            phoneInput.classList.remove('error');
+            phoneError.style.display = 'none';
+        });
+
+        // VALIDAÇÃO
+        form.addEventListener('submit', function(e) {
+            const rawPhone = phoneInput.value.replace(/\D/g, '');
+            if (rawPhone.length < 10) {
+                e.preventDefault();
+                phoneInput.classList.add('error');
+                phoneError.style.display = 'block';
+                phoneInput.focus();
+                alert('Atenção: Insira um telefone válido dos EUA para que possamos entrar em contato.');
+            }
+        });
+    </script>
 
 </body>
 </html>
